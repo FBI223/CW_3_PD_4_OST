@@ -253,7 +253,7 @@ int readBMP_moj(char* filename_1 , char* filename_2  )
 
 int main() {
 
-    readBMP_moj("C:\\Users\\msztu\\Pictures\\wmii.bmp" , "C:\\Users\\msztu\\Pictures\\wmii_nowy.bmp") ;
+    readBMP_moj("C:\\Users\\msztu\\Pictures\\krakow.bmp" , "C:\\Users\\msztu\\Pictures\\krakow_nowy.bmp") ;
 
     cout << "Hello, World!" << endl;
     return 0;
