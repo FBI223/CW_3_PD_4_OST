@@ -89,6 +89,7 @@ int readBMP_moj(char* filename_1 , char* filename_2  )
 //        cout << ile_pikslei_wcz << endl;
 //
 //        for (int i = 0 ; i < max_size_arr ; i+=18 )
+
 //        {
 //
 //            temp_arr[i + ktory_piksel] = 255;
