@@ -1,0 +1,4 @@
+ToolSet: w64 7.0 (local)@C:\Program Files\MinGW
+Options: 
+
+Options:-DCMAKE_MAKE_PROGRAM=D:/instalki/toolbox/aplikacje do programowania toolbox/apps/CLion/ch-0/223.8836.42/bin/ninja/win/x64/ninja.exe

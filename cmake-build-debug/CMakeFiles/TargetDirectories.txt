@@ -1,0 +1,3 @@
+C:/Users/msztu/CLionProjects/P2 CW 23/CW 3 PD 4 OST/cmake-build-debug/CMakeFiles/CW_3_PD_4_OST.dir
+C:/Users/msztu/CLionProjects/P2 CW 23/CW 3 PD 4 OST/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/msztu/CLionProjects/P2 CW 23/CW 3 PD 4 OST/cmake-build-debug/CMakeFiles/rebuild_cache.dir
