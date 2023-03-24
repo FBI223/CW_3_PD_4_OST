@@ -47,6 +47,7 @@ int readBMP_moj(char* filename_1 , char* filename_2  )
         ile_padding_wys = ( (wysokosc ) - ((wysokosc / 4 )*4 ) ) ;
     }
     long long int ile_pikseli = (szerokosc+ile_padding_szer)* (wysokosc+ile_padding_wys)*3 ;
+    unsigned char* dynamic_arr = new unsigned char[ile_pikseli] ;
     long long int ile_pikseli_padding = (ile_pikseli - ( wysokosc*szerokosc*3 ))*3 ;
     const int dlg_arr_reszty = rozmiar_pliku - ile_pikseli - 54 ;
     unsigned char reszta[dlg_arr_reszty] ;
@@ -60,63 +61,82 @@ int readBMP_moj(char* filename_1 , char* filename_2  )
 
     std::fseek(f,54,SEEK_SET) ;
     std::fwrite(header,sizeof(unsigned char),54,ff) ;
-
-
-
+    std::fseek(f,54,SEEK_CUR) ;
+    std::fread(dynamic_arr, sizeof(unsigned char),ile_pikseli , f) ;
+//    std::fseek(f,54,SEEK_SET) ;
     int row_size = wysokosc*3 ;
     int column_size = szerokosc*3 ;
     int ktory_piksel = 0 ;
     int ktory_row = 0;
 
-    while ( czy_koniec == 0  )
+    long long int i_dynamic = 0;
+    while ( i_dynamic < ile_pikseli )
     {
-        unsigned char temp_arr[max_size_arr ] ;
-        ile_pikslei_wcz = std::fread(temp_arr,sizeof(unsigned char),max_size_arr,f) ;
-        cout << ile_pikslei_wcz << endl;
+        dynamic_arr[i_dynamic] = 255;
+        i_dynamic+= 3 ;
 
-        for (int i = 0 ; i < max_size_arr ; i+=3 )
-        {
-            temp_arr[i] = 255;
+    }
 
-        }
 
-        // 81 paskow
+    ile_pikslei_wcz = std::fwrite(dynamic_arr,sizeof(unsigned char),ile_pikseli,ff) ;
 
-        std::fwrite(temp_arr,sizeof(unsigned char),ile_pikslei_wcz,ff) ;
-
-//        ktory_piksel += 1;
-//        if ( ktory_piksel == 3 )
+//
+//
+//    while ( czy_koniec == 0  )
+//    {
+//        unsigned char temp_arr[max_size_arr ] ;
+//        ile_pikslei_wcz = std::fread(temp_arr,sizeof(unsigned char),max_size_arr,f) ;
+//        cout << ile_pikslei_wcz << endl;
+//
+//        for (int i = 0 ; i < max_size_arr ; i+=18 )
 //        {
-//            ktory_piksel = 0;
+//
+//            temp_arr[i + ktory_piksel] = 255;
+////            ktory_piksel++;
+////            if ( ktory_piksel == 3 )
+////            {
+////                ktory_piksel = 0;
+////            }
+//
 //        }
-
-        ile_pikseli_wczytales += ile_pikslei_wcz ;
-
-        if ( ile_pikseli_wczytales >= ile_pikseli )
-        {
-            czy_koniec = 1 ;
-        }
-
-
-    }
-
-    cout << " flaga " << endl;
-
-    long long int ile_mozesz_Wczytac_pikseli = 0;
-    long long int ile_pikseli_paddingg_tylko = ile_pikseli_padding - ile_pikseli ;
-    long long int ile_wczytales_pikslei_w_paddingu = 0;
-    czy_koniec = 0;
-
-    unsigned char temp_arr[max_size_arr ] ;
-
-    for (int i = 0 ; i < max_size_arr ; i+=3)
-    {
-        temp_arr[i] = 255 ;
-        temp_arr[i+1] = std::rand() / 255 ;
-        temp_arr[i+2] = std::rand() / 255 ;
-    }
-
-    std::fwrite(temp_arr,sizeof(unsigned char),ile_pikseli_paddingg_tylko,ff) ;
+//
+//        // 81 paskow
+//
+//        std::fwrite(temp_arr,sizeof(unsigned char),ile_pikslei_wcz,ff) ;
+//
+////        ktory_piksel = 0;
+////        if ( ktory_piksel == 3 )
+////        {
+////            ktory_piksel = 0;
+////        }
+//
+//        ile_pikseli_wczytales += ile_pikslei_wcz ;
+//
+//        if ( ile_pikseli_wczytales >= ile_pikseli )
+//        {
+//            czy_koniec = 1 ;
+//        }
+//
+//
+//    }
+//
+//    cout << " flaga " << endl;
+//
+//    long long int ile_mozesz_Wczytac_pikseli = 0;
+//    long long int ile_pikseli_paddingg_tylko = ile_pikseli_padding - ile_pikseli ;
+//    long long int ile_wczytales_pikslei_w_paddingu = 0;
+//    czy_koniec = 0;
+//
+//    unsigned char temp_arr[max_size_arr ] ;
+//
+//    for (int i = 0 ; i < max_size_arr ; i+=3)
+//    {
+//        temp_arr[i] = 255 ;
+//        temp_arr[i+1] = std::rand() / 255 ;
+//        temp_arr[i+2] = std::rand() / 255 ;
+//    }
+//
+//    std::fwrite(temp_arr,sizeof(unsigned char),ile_pikseli_paddingg_tylko,ff) ;
 
 //
 //
